@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 public class MyInterceptor implements HandlerInterceptor {
+
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Object handler) throws Exception {
+
         boolean flag =true;
         String ip = request.getRemoteAddr();
         long startTime = System.currentTimeMillis();
@@ -31,7 +35,11 @@ public class MyInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request,
+                           HttpServletResponse response,
+                           Object handler,
+                           ModelAndView modelAndView) throws Exception {
+
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
         long startTime = (Long) request.getAttribute("requestStartTime");
@@ -48,7 +56,10 @@ public class MyInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request,
+                                HttpServletResponse response,
+                                Object handler,
+                                Exception ex) throws Exception {
 
     }
 }
