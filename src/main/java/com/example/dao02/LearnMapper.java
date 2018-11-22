@@ -1,4 +1,4 @@
-package com.example.dao;
+package com.example.dao02;
 
 import com.example.domain.LearnResource;
 import org.apache.ibatis.annotations.Mapper;

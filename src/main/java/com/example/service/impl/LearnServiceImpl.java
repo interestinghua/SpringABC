@@ -1,7 +1,6 @@
 package com.example.service.impl;
 
-import com.example.dao.LearnMapper;
-import com.example.dao.LearnMapperV2;
+import com.example.dao02.LearnMapperV2;
 import com.example.domain.LearnResource;
 import com.example.service.LearnService;
 import com.github.pagehelper.PageHelper;

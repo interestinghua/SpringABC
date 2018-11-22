@@ -1,4 +1,4 @@
-package com.example.dao;
+package com.example.dao02;
 
 import com.example.domain.LearnResource;
 import com.example.tools.StringUtil;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
-@Component
 @Mapper
 public interface LearnMapperV2 {
 
