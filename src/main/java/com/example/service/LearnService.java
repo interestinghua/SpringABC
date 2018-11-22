@@ -1,16 +1,15 @@
 package com.example.service;
 
 import com.example.domain.LearnResource;
+import com.example.model.QueryLearnListReq;
+import com.example.util.Page;
 
 import java.util.List;
-import java.util.Map;
 
-public interface LearnService {
+public interface LearnService extends IService<LearnResource> {
 
-    int add(LearnResource LearnResource);
-    int update(LearnResource LearnResource);
-    int deleteByIds(String[] ids);
-    LearnResource queryLearnResourceById(Long LearnResource);
-    List<LearnResource> queryLearnResourceList(Map<String, Object> params);
-    
+    List<LearnResource> queryLearnResourceList(Page<QueryLearnListReq> page);
+
+    void deleteBatch(Long[] ids);
+
 }

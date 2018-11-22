@@ -1,45 +1,32 @@
 package com.example.service.impl;
 
-import com.example.dao02.LearnMapperV2;
+import com.example.dao.LearnResourceMapper;
 import com.example.domain.LearnResource;
+import com.example.model.QueryLearnListReq;
 import com.example.service.LearnService;
+import com.example.util.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class LearnServiceImpl implements LearnService {
+public class LearnServiceImpl extends BaseService<LearnResource> implements LearnService {
 
     @Autowired
-    LearnMapperV2 learnMapper;
+    private LearnResourceMapper learnResourceMapper;
 
     @Override
-    public int add(LearnResource LearnResource) {
-        return this.learnMapper.add(LearnResource);
+    public void deleteBatch(Long[] ids) {
+        Arrays.stream(ids).forEach(id -> learnResourceMapper.deleteByPrimaryKey(id));
     }
 
     @Override
-    public int update(LearnResource LearnResource) {
-        return this.learnMapper.update(LearnResource);
-    }
-
-    @Override
-    public int deleteByIds(String[] ids) {
-        return this.learnMapper.deleteByIds(ids);
-    }
-
-    @Override
-    public LearnResource queryLearnResourceById(Long id) {
-        return this.learnMapper.queryLearnResourceById(id);
-    }
-
-    @Override
-    public List<LearnResource> queryLearnResourceList(Map<String, Object> params) {
-        PageHelper.startPage(Integer.parseInt(params.get("page").toString()), Integer.parseInt(params.get("rows").toString()));
-        return this.learnMapper.queryLearnResourceList(params);
+    public List<LearnResource> queryLearnResourceList(Page<QueryLearnListReq> page) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        return learnResourceMapper.queryLearnResouceList(page.getCondition());
     }
 
 }

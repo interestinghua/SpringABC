@@ -2,7 +2,7 @@ package com.example.controller;
 
 import com.example.domain.LearnResource;
 import com.example.model.QueryLearnListReq;
-import com.example.service.LearnService2;
+import com.example.service.LearnService;
 import com.example.util.AjaxObject;
 import com.example.util.Page;
 import com.github.pagehelper.PageInfo;
@@ -23,7 +23,7 @@ import java.util.List;
 public class LearnController extends AbstractController {
 
     @Autowired
-    private LearnService2 learnService;
+    private LearnService learnService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("")
