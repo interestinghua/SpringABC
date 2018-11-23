@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 @Configuration
 public class ContainerConfig implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
 
-    @Bean
     @Override
     public void customize(ConfigurableServletWebServerFactory factory) {
         factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500"));

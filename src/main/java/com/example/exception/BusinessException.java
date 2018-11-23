@@ -1,10 +1,8 @@
 package com.example.exception;
 
-import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
 public class BusinessException extends RuntimeException implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,4 +32,19 @@ public class BusinessException extends RuntimeException implements Serializable 
         this.code = code;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class MyWebMvcConfigurerAdapter extends WebMvcConfigurationSupport {
 
     /**
