@@ -13,7 +13,7 @@ public abstract class AbstractController {
     @Autowired
     private HttpServletRequest request;
 
-    protected String getContextPath(){
+    protected String getContextPath() {
         return request.getContextPath();
     }
 

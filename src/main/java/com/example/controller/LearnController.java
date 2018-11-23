@@ -27,52 +27,57 @@ public class LearnController extends AbstractController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("")
-    public String learn(Model model){
-        model.addAttribute("ctx", getContextPath()+"/");
+    public String learn(Model model) {
+        model.addAttribute("ctx", getContextPath() + "/");
         return "learn-resource";
     }
 
     /**
      * 查询教程列表
+     *
      * @param page
      * @return
      */
-    @RequestMapping(value = "/queryLeanList",method = RequestMethod.POST)
+    @RequestMapping(value = "/queryLeanList", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxObject queryLearnList(Page<QueryLearnListReq> page){
-        List<LearnResource> learnList=learnService.queryLearnResourceList(page);
-        PageInfo<LearnResource> pageInfo =new PageInfo<LearnResource>(learnList);
+    public AjaxObject queryLearnList(Page<QueryLearnListReq> page) {
+        List<LearnResource> learnList = learnService.queryLearnResourceList(page);
+        PageInfo<LearnResource> pageInfo = new PageInfo<LearnResource>(learnList);
         return AjaxObject.ok().put("page", pageInfo);
     }
+
     /**
      * 新添教程
+     *
      * @param learn
      */
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxObject addLearn(@RequestBody LearnResource learn){
+    public AjaxObject addLearn(@RequestBody LearnResource learn) {
         learnService.save(learn);
         return AjaxObject.ok();
     }
 
     /**
      * 修改教程
+     *
      * @param learn
      */
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxObject updateLearn(@RequestBody LearnResource learn){
+    public AjaxObject updateLearn(@RequestBody LearnResource learn) {
         learnService.updateNotNull(learn);
         return AjaxObject.ok();
     }
 
     /**
      * 删除教程
+     *
      * @param ids
      */
-    @RequestMapping(value="/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxObject deleteLearn(@RequestBody Long[] ids){
+    public AjaxObject deleteLearn(@RequestBody Long[] ids) {
         learnService.deleteBatch(ids);
         return AjaxObject.ok();
     }
