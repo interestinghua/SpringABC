@@ -9,6 +9,8 @@ public interface IService<T> {
 
     T selectByKey(Object key);
 
+    int deleteByPrimaryKey(Object key);
+
     int save(T entity);
 
     int delete(Object key);

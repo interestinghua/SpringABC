@@ -1,12 +1,11 @@
-package com.example.service.impl;
+package com.example.service;
 
-import com.example.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-public abstract class BaseService<T> implements IService<T> {
+public class BaseService<T> implements IService<T> {
 
     @Autowired
     protected Mapper<T> mapper;
@@ -19,6 +18,11 @@ public abstract class BaseService<T> implements IService<T> {
     public T selectByKey(Object key) {
         //说明：根据主键字段进行查询，方法参数必须包含完整的主键属性，查询条件使用等号
         return mapper.selectByPrimaryKey(key);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Object key) {
+        return mapper.deleteByPrimaryKey(key);
     }
 
     @Override

@@ -2,10 +2,7 @@ package com.example.service.impl;
 
 import com.example.dao.LearnResourceMapper;
 import com.example.domain.LearnResource;
-import com.example.model.QueryLearnListReq;
-import com.example.service.LearnService;
-import com.example.util.Page;
-import com.github.pagehelper.PageHelper;
+import com.example.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,20 +10,17 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class LearnServiceImpl extends BaseService<LearnResource> implements LearnService {
+public class LearnServiceImpl extends BaseService<LearnResource>  {
 
     @Autowired
     private LearnResourceMapper learnResourceMapper;
 
-    @Override
     public void deleteBatch(Long[] ids) {
-        Arrays.stream(ids).forEach(id -> learnResourceMapper.deleteByPrimaryKey(id));
+        Arrays.stream(ids).forEach(this::deleteByPrimaryKey);
     }
 
-    @Override
-    public List<LearnResource> queryLearnResourceList(Page<QueryLearnListReq> page) {
-        PageHelper.startPage(page.getPage(), page.getRows());
-        return learnResourceMapper.queryLearnResourceList(page.getCondition());
+    public List<LearnResource> queryLearnResourceList() {
+        return learnResourceMapper.queryLearnResourceList();
     }
 
 }

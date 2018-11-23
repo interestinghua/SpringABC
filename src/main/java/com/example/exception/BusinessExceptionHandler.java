@@ -1,6 +1,6 @@
 package com.example.exception;
 
-import com.example.util.AjaxObject;
+import com.example.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
@@ -40,7 +40,7 @@ public class BusinessExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public Object handleException(Exception e, HttpServletRequest req) {
-        AjaxObject r = new AjaxObject();
+        ReturnObject r = new ReturnObject();
         //业务异常
         if (e instanceof BusinessException) {
             r.put("code", ((BusinessException) e).getCode());
