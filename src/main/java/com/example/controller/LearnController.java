@@ -46,6 +46,17 @@ public class LearnController extends AbstractController {
     public List<LearnResource> queryLearnResourceByName(@PathVariable("name") String name) {
         return learnService.queryLearnResourceListByName(name);
     }
+
+    //根据名字查询记录
+    @RequestMapping(value = "/queryLearnResourceByTitle/{title}",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public List<LearnResource> queryLearnResourceByTitle(@PathVariable("title") String title) {
+        return learnService.queryLearnResourceListByTitle(title);
+    }
+
     /**
      * 查询教程列表
      *

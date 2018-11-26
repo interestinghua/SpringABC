@@ -28,9 +28,14 @@ public class LearnServiceImpl extends BaseService<LearnResource> {
     public List<LearnResource> queryLearnResourceListByName(String name) {
         Example example = new Example(LearnResource.class);
         Example.Criteria criteria = example.createCriteria();
-//        criteria.orEqualTo("author", name);
-//        criteria.andEqualTo("author", name);
         criteria.orLike("author", "%" + name + "%");
+        return mapper.selectByExample(example);
+    }
+
+    public List<LearnResource> queryLearnResourceListByTitle(String title) {
+        Example example = new Example(LearnResource.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.orLike("title", "%" + title + "%");
         return mapper.selectByExample(example);
     }
 
