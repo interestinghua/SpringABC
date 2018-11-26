@@ -36,6 +36,7 @@ public class ReturnObject extends HashMap<String, Object> {
 
     public static ReturnObject ok(Map<String, Object> map) {
         ReturnObject r = new ReturnObject();
+        r.put("code",200);
         r.putAll(map);
         return r;
     }
